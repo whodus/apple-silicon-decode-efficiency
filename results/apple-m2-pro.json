@@ -1,0 +1,39 @@
+{
+  "chip": "Apple M2 Pro",
+  "macos": "15.6.1",
+  "prompt": "Explain how a CPU cache works, in about three paragraphs.",
+  "max_tokens": 256,
+  "runs": 2,
+  "params": 1540000000.0,
+  "models": [
+    "mlx-community/Qwen2.5-1.5B-Instruct-4bit",
+    "mlx-community/Qwen2.5-1.5B-Instruct-8bit",
+    "mlx-community/Qwen2.5-1.5B-Instruct-bf16"
+  ],
+  "rows": [
+    {
+      "decode_tps": 161.178,
+      "prefill_tps": 243.54,
+      "peak_gb": 0.987,
+      "bits": 4,
+      "weight_gb": 0.77,
+      "eff_bw": 124.10706
+    },
+    {
+      "decode_tps": 89.396,
+      "prefill_tps": 283.945,
+      "peak_gb": 1.759,
+      "bits": 8,
+      "weight_gb": 1.54,
+      "eff_bw": 137.66984
+    },
+    {
+      "decode_tps": 53.81,
+      "prefill_tps": 255.877,
+      "peak_gb": 3.182,
+      "bits": 16,
+      "weight_gb": 3.08,
+      "eff_bw": 165.7348
+    }
+  ]
+}

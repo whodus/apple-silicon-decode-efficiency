@@ -1,0 +1,22 @@
+Chip: Apple M2 Pro
+Look up your chip's memory bandwidth (e.g. 'M3 memory bandwidth') to compare with the last column.
+
+Running mlx-community/Qwen2.5-1.5B-Instruct-4bit ...
+Running mlx-community/Qwen2.5-1.5B-Instruct-8bit ...
+Running mlx-community/Qwen2.5-1.5B-Instruct-bf16 ...
+
+ bits weights GB decode tok/s prefill tok/s   peak GB  ~effective GB/s
+    4       0.77        161.2         243.5      0.99              124
+    8       1.54         89.4         283.9      1.76              138
+   16       3.08         53.8         255.9      3.18              166
+Saved results/apple-m2-pro.json
+
+How to read this:
+- decode tok/s should drop roughly as weights GB grows (about 2x per step).
+  Same compute, more bytes -> slower. That means decode is bandwidth bound.
+- ~effective GB/s = tok/s x weight size. If it lands in the same ballpark
+  across rows and near your chip's spec bandwidth, that's the proof.
+  (4-bit has a little extra overhead for quantization scales, so it's approximate.)
+- prefill tok/s is much higher: the whole prompt is processed in parallel,
+  so weights are reused across many tokens -> more compute bound.
+
